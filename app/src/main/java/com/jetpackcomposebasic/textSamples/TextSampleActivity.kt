@@ -3,47 +3,95 @@ package com.jetpackcomposebasic.textSamples
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextIndent
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 class TextSampleActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // The setContent block defines the layout of the activity and it is used in place of
-        // setContent(R.id.some_xml_file) that we use normally(without compose). This is an
+        // The setContent block defines the layout of the activity
         setContent {
-            // Column is used to have the views one after the other vertically.,
-            // pass some parameters such as modifier, verticalArrangement, horizontalAlignment, etc.
-            // modifier is used to decorate or add behavior to UI elements. Here we are telling the
-            // column to fill the maximum size of the screen
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                SimpleText("Android Text field JetpackBasic")
+            // row to fill the maximum size of the screen and bg color
+            Row(
+                Modifier
+                    .background(Color.LightGray)
+                    .fillMaxSize()
+            )
+            {
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    TextStyling(
+                        "Android Text field JetpackBasic",
+                        style = TextStyle(
+                            // Text with Font Size
+                            textAlign = TextAlign.Center,
+                            // Text with Font Size
+                            fontSize = 45.sp,
+                            // Text with Font Weight
+                            fontWeight = FontWeight.SemiBold,
+                            // Text with Font Style
+                            fontStyle = FontStyle.Normal,
+                            // Text with color
+                            color = Color.Blue,
+                            // Text with font family
+                            fontFamily = FontFamily.Cursive,
+                            // Text with Decoration
+                            textDecoration = TextDecoration.Underline,
+                            // Text with Shadow
+                            shadow = Shadow(
+                                color = Color.Red, blurRadius = 14f,
+                                offset = Offset(8f, 8f)
+                            ),
+                            // Text with Background Color
+                            background = Color.LightGray,
+                            // Text with Padding
+                            textIndent = TextIndent(firstLine = 40.sp)
+                        )
+                    )
+                    TextStyling(
+                        "Strikethrough text",
+                        style = TextStyle(
+                            textDecoration = TextDecoration.LineThrough,
+                            textIndent = TextIndent(firstLine = 40.sp),
+                            color = Color.Blue,
+                        )
+                    )
+                }
             }
         }
-    }}
-
-// This is a Composable function. To write any Composable function, you need to use @Composable annotation
-@Composable
-fun SimpleText(displayText: String) {
-    // Text composable is used to display some text
-    Text(text = displayText)
+    }
 }
 
 
-// you need to use @Preview annotation and then write a Composable function and call your UI element.
-// The UI will be refreshed on every build or you can refresh manually from the UI preview.
-@Preview
 @Composable
-fun SimpleTextPreview() {
-    SimpleText("Hi Compose")
+fun TextStyling(displayText: String, style: TextStyle? = null, maxLines: Int? = null) {
+    // text style is used to put some styling to Compose UI elements.
+    Text(
+        text = displayText,
+        modifier = Modifier.padding(16.dp),
+        style = style ?: TextStyle.Default,
+        overflow = TextOverflow.Ellipsis,
+        maxLines = maxLines ?: Int.MAX_VALUE
+    )
 }
+
