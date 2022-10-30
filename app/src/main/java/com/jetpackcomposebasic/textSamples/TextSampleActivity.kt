@@ -20,7 +20,6 @@ class TextSampleActivity : ComponentActivity() {
         setContent {
             // Column is used to have the views one after the other vertically.,
             // pass some parameters such as modifier, verticalArrangement, horizontalAlignment, etc.
-
             // modifier is used to decorate or add behavior to UI elements. Here we are telling the
             // column to fill the maximum size of the screen
             Column(
