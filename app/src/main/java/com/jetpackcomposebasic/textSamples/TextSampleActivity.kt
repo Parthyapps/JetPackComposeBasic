@@ -5,6 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -77,6 +80,24 @@ class TextSampleActivity : ComponentActivity() {
                         )
                     )
                 }
+            }
+
+            Column(
+                Modifier
+                    .background(
+                        Color.Blue
+                    )
+                    .padding(10.dp)
+            ) {
+                OutlinedTextField(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 20.dp, end = 20.dp).background(Color.White, RoundedCornerShape(22.dp)),
+                    shape = RoundedCornerShape(22.dp),
+                    value = "Name",
+                    onValueChange = {},
+                    textStyle = MaterialTheme.typography.caption
+                )
             }
         }
     }
