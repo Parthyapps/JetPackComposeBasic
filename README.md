@@ -1,3 +1,3 @@
 # JetPackComposeBasic
-Jetpack Compose Example Project 
-TextView: check how to display text using JetPack Compose?
+# Jetpack Compose Example Project 
+# Android JetPack Compose with basic text view font, style, size, decoration, indent, background color
