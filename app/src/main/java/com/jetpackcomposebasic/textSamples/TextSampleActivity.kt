@@ -37,7 +37,7 @@ class TextSampleActivity : ComponentActivity() {
             // row to fill the maximum size of the screen and bg color
             Row(
                 Modifier
-                    .background(Color.LightGray)
+                    .background(Color.Unspecified)
                     .fillMaxSize()
             )
             {
